@@ -119,7 +119,40 @@ namespace Assignment05
 
         public void EX01_FindLongestConsecutiveSequence(int[] numbers)
         {
-            throw new System.NotImplementedException();
+            if (numbers == null || numbers.Length == 0)
+            {
+                Debug.Log("The longest consecutive sequence is: 0");
+                return;
+            }
+
+            System.Array.Sort(numbers);
+
+            int longestStreak = 1;
+            int currentStreak = 1;
+
+            for (int i = 0; i < numbers.Length - 1; i++)
+            {
+                if (numbers[i] == numbers[i + 1])
+                {
+                    continue;
+                }
+
+                if (numbers[i + 1] == numbers[i] + 1)
+                {
+                    currentStreak++;
+                }
+                else
+                {
+                    currentStreak = 1;
+                }
+
+                if (currentStreak > longestStreak)
+                {
+                    longestStreak = currentStreak;
+                }
+            }
+
+            Debug.Log($"The longest consecutive sequence is: {longestStreak}");
         }
 
         #endregion

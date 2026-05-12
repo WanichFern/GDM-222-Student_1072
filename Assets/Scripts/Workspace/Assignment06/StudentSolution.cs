@@ -132,7 +132,22 @@ namespace Assignment06
 
         public void EX01_FindTargetEnemies(int[] enemyHPs, int mana)
         {
-            throw new NotImplementedException();
+            System.Array.Sort(enemyHPs);
+
+            int currentManaUsage = 0;
+
+            for (int i = 0; i < enemyHPs.Length; i++)
+            {
+                if (currentManaUsage + enemyHPs[i] <= mana)
+                {
+                    currentManaUsage += enemyHPs[i];
+                    Debug.Log(enemyHPs[i]);
+                }
+                else
+                {
+                    break;
+                }
+            }
         }
 
         #endregion

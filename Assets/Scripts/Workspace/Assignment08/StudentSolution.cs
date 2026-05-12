@@ -145,7 +145,44 @@ namespace Assignment08
 
         public void EX01_ParenthesesChecker(string str)
         {
-            throw new NotImplementedException();
+            Stack<char> stack = new Stack<char>();
+
+            for (int i = 0; i < str.Length; i++)
+            {
+                char c = str[i];
+
+                if (c == '(' || c == '[' || c == '{')
+                {
+                    stack.Push(c);
+                }
+                else if (c == ')' || c == ']' || c == '}')
+                {
+                    if (stack.Count == 0)
+                    {
+                        Debug.Log("Unbalanced");
+                        return;
+                    }
+
+                    char top = stack.Pop();
+
+                    if ((c == ')' && top != '(') ||
+                        (c == ']' && top != '[') ||
+                        (c == '}' && top != '{'))
+                    {
+                        Debug.Log("Unbalanced");
+                        return;
+                    }
+                }
+            }
+
+            if (stack.Count == 0)
+            {
+                Debug.Log("Balanced");
+            }
+            else
+            {
+                Debug.Log("Unbalanced");
+            }
         }
 
         #endregion
